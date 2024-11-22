@@ -8,11 +8,12 @@ public class RhythmManager : MonoBehaviour
     public BeatScroller beatScroller;
 
     public bool startPlaying;
-    
-    // Start is called before the first frame update
+
+    public static RhythmManager instance;
+
     void Start()
     {
-        
+        instance = this;
     }
 
     // Update is called once per frame
@@ -25,8 +26,24 @@ public class RhythmManager : MonoBehaviour
                 startPlaying = true;
                 beatScroller.hasStarted = true;
 
+                // Calculate the music offset based on the BeatScroller's position
+                float yOffset = beatScroller.transform.position.y;
+                float timeOffset = Mathf.Abs(yOffset) / (beatScroller.beatTempo / 60f); // Convert y offset to time
+
+                // Set the starting time for the music
+                theMusic.time = timeOffset;
                 theMusic.Play();
             }
         }
+    }
+
+    public void NoteHit()
+    {
+        Debug.Log("NoteHit");
+    }
+
+    public void NoteMissed()
+    {
+        Debug.Log("NoteMissed");
     }
 }

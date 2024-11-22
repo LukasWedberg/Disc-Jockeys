@@ -4,42 +4,31 @@ using UnityEngine;
 
 public class Note : MonoBehaviour
 {
-    public bool canBePressed;
-    
-    public KeyCode keyToPress;
-    
-    // Start is called before the first frame update
-    void Start()
+    public enum NoteColor
     {
-        
+        Blue,
+        Red
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(keyToPress))
-        {
-            if (canBePressed)
-            {
-                gameObject.SetActive(false);
-            }
-        }
-    }
+    public NoteColor noteColor; // Set the note color in the Inspector
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Activator")
+        // Check collision with tags
+        if (noteColor == NoteColor.Red && other.tag == "Red")
         {
-            canBePressed = true;
+            RhythmManager.instance.NoteHit();
+            Destroy(gameObject); // Destroy or deactivate the note after hit
+        }
+        else if (noteColor == NoteColor.Blue && other.tag == "Blue")
+        {
+            RhythmManager.instance.NoteHit();
+            Destroy(gameObject);
+        }
+        else
+        {
+            RhythmManager.instance.NoteMissed();
+            Destroy(gameObject);
         }
     }
-    
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.tag == "Activator")
-        {
-            canBePressed = false;
-        }
-    }
-    
 }
