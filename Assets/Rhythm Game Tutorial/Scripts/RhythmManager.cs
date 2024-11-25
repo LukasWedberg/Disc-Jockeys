@@ -11,6 +11,9 @@ public class RhythmManager : MonoBehaviour
 
     public static RhythmManager instance;
 
+    public int currentScore;
+    public int scorePerNote = 100;
+
     void Start()
     {
         instance = this;
@@ -40,6 +43,8 @@ public class RhythmManager : MonoBehaviour
     public void NoteHit()
     {
         Debug.Log("NoteHit");
+
+        currentScore += scorePerNote;
     }
 
     public void NoteMissed()
