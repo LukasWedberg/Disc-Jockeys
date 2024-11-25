@@ -17,12 +17,12 @@ public class Note : MonoBehaviour
         // Check collision with tags
         if (noteColor == NoteColor.Red && other.CompareTag("Red"))
         {
-            RhythmManager.instance.NoteHit();
-            Destroy(gameObject); // Destroy or deactivate the note after hit
+            RhythmManager.instance.NoteHit(RhythmManager.instance.scorePerNote);
+            Destroy(gameObject);
         }
         else if (noteColor == NoteColor.Blue && other.CompareTag("Blue"))
         {
-            RhythmManager.instance.NoteHit();
+            RhythmManager.instance.NoteHit(RhythmManager.instance.scorePerNote);
             Destroy(gameObject);
         }
         else

@@ -5,22 +5,36 @@ using TMPro;
 
 public class RhythmManager : MonoBehaviour
 {
+    public static RhythmManager instance;
+
     public AudioSource theMusic;
     public BeatScroller beatScroller;
+    public TMP_Text scoreText;
+    public TMP_Text multiplierText;
+    public TMP_Text streakText;
 
     public bool startPlaying;
 
-    public static RhythmManager instance;
-
     public int currentScore;
     public int scorePerNote = 100;
-    
-    public TMP_Text scoreText;
+    public int scorePerSpin = 250;
+
+    public int currentMultiplier = 1;
+    public int[] multiplierThresholds;
+
+    public int steakNumber = 0;
 
     void Start()
     {
         instance = this;
         UpdateScoreText();
+
+        // Calculate the music offset based on the BeatScroller's position
+        float yOffset = beatScroller.transform.position.y;
+        float timeOffset = Mathf.Abs(yOffset) / (beatScroller.beatTempo / 60f); // Convert y offset to time
+
+        // Set the starting time for the music
+        theMusic.time = timeOffset;
     }
 
     // Update is called once per frame
@@ -32,13 +46,6 @@ public class RhythmManager : MonoBehaviour
             {
                 startPlaying = true;
                 beatScroller.hasStarted = true;
-
-                // Calculate the music offset based on the BeatScroller's position
-                float yOffset = beatScroller.transform.position.y;
-                float timeOffset = Mathf.Abs(yOffset) / (beatScroller.beatTempo / 60f); // Convert y offset to time
-
-                // Set the starting time for the music
-                theMusic.time = timeOffset;
                 theMusic.Play();
             }
         }
@@ -52,17 +59,40 @@ public class RhythmManager : MonoBehaviour
         {
             scoreText.text = $"{currentScore} pts";
         }
+
+        if (multiplierText != null)
+        {
+            multiplierText.text = $"Multiplier\n{currentMultiplier}X";
+        }
+
+        if (streakText != null)
+        {
+            streakText.text = $"Streak\n{steakNumber}";
+        }
     }
 
-    public void NoteHit()
+    public void NoteHit(int scoreValue)
     {
-        Debug.Log("NoteHit");
-
-        currentScore += scorePerNote;
+        steakNumber++;
+        UpdateMultiplier();
+        currentScore += scoreValue * currentMultiplier;
     }
 
     public void NoteMissed()
     {
-        Debug.Log("NoteMissed");
+        steakNumber = 0;
+        currentMultiplier = 1; // Reset multiplier on a miss
+    }
+
+    private void UpdateMultiplier()
+    {
+        currentMultiplier = 1; // Default multiplier
+        for (int i = 0; i < multiplierThresholds.Length; i++)
+        {
+            if (steakNumber >= multiplierThresholds[i])
+            {
+                currentMultiplier = i + 2; // Set multiplier to index + 1
+            }
+        }
     }
 }
