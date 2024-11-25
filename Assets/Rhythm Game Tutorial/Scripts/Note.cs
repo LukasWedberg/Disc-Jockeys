@@ -15,12 +15,12 @@ public class Note : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Check collision with tags
-        if (noteColor == NoteColor.Red && other.tag == "Red")
+        if (noteColor == NoteColor.Red && other.CompareTag("Red"))
         {
             RhythmManager.instance.NoteHit();
             Destroy(gameObject); // Destroy or deactivate the note after hit
         }
-        else if (noteColor == NoteColor.Blue && other.tag == "Blue")
+        else if (noteColor == NoteColor.Blue && other.CompareTag("Blue"))
         {
             RhythmManager.instance.NoteHit();
             Destroy(gameObject);

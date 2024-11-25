@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class RhythmManager : MonoBehaviour
 {
@@ -13,10 +14,13 @@ public class RhythmManager : MonoBehaviour
 
     public int currentScore;
     public int scorePerNote = 100;
+    
+    public TMP_Text scoreText;
 
     void Start()
     {
         instance = this;
+        UpdateScoreText();
     }
 
     // Update is called once per frame
@@ -37,6 +41,16 @@ public class RhythmManager : MonoBehaviour
                 theMusic.time = timeOffset;
                 theMusic.Play();
             }
+        }
+
+        UpdateScoreText();
+    }
+
+    public void UpdateScoreText()
+    {
+        if (scoreText != null)
+        {
+            scoreText.text = $"{currentScore} pts";
         }
     }
 
