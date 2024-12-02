@@ -835,9 +835,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.2631579
+    x: 0
     y: 0
-    width: 0.47368422
+    width: 1
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -2912,7 +2912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 999ea23334b3df943a714d5d2d5754d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseMovementMultiplier: -0.5
+  mouseMovementMultiplier: -0.2
   mouseWheelMultiplier: 150
   speedThreshold: 300
   spinDetectionRadius: 6
