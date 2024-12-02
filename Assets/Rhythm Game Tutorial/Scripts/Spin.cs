@@ -22,12 +22,12 @@ public class Spin : MonoBehaviour
                 if ((spinDirection == SpinDirection.Left && discController.isSpinningLeft) ||
                     (spinDirection == SpinDirection.Right && discController.isSpinningRight))
                 {
-                    RhythmManager.instance.NoteHit(RhythmManager.instance.scorePerSpin);
+                    ScoreManager.instance.NoteHit(ScoreManager.instance.scorePerSpin);
                     Destroy(gameObject); 
                 }
                 else
                 {
-                    RhythmManager.instance.NoteMissed();
+                    ScoreManager.instance.NoteMissed();
                     Destroy(gameObject); 
                 }
             }

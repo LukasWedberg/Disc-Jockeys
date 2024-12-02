@@ -1,40 +1,42 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BeatScroller : MonoBehaviour
 {
     public float beatTempo;
-    public float speed = 1f; // Speed multiplier, set in Inspector
-
+    public float speed = 1f;
     public bool hasStarted;
 
     private float scrollSpeed;
+    private Transform objectTransform;
+    private Vector3 moveDirection;
 
-    // Start is called before the first frame update
     void Start()
     {
+        objectTransform = transform;
         scrollSpeed = beatTempo / 60f * speed;
-        transform.position = new Vector3(0f, transform.position.y * speed, 0f);
+        
+        // Calculate the direction along the rotated plane
+        moveDirection = Quaternion.Euler(objectTransform.eulerAngles) * Vector3.down;
+        
+        Vector3 localPos = objectTransform.localPosition;
+        objectTransform.localPosition = new Vector3(localPos.x, localPos.y * speed, localPos.z);
 
-        // Adjust the Y position of all child objects based on the speed
-        if (speed > 1f) // Only modify positions when speed multiplier is greater than 1
+        if (speed > 1f)
         {
             foreach (Transform child in transform)
             {
-                Vector3 childPosition = child.localPosition;
-                childPosition.y *= speed;
-                child.localPosition = childPosition;
+                Vector3 childLocalPos = child.localPosition;
+                childLocalPos.y *= speed;
+                child.localPosition = childLocalPos;
             }
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (hasStarted)
         {
-            transform.position -= new Vector3(0f, scrollSpeed * Time.deltaTime, 0f);
+            objectTransform.position += moveDirection * scrollSpeed * Time.deltaTime;
         }
     }
 }

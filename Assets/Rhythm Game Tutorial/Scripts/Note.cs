@@ -17,17 +17,17 @@ public class Note : MonoBehaviour
         // Check collision with tags
         if (noteColor == NoteColor.Red && other.CompareTag("Red"))
         {
-            RhythmManager.instance.NoteHit(RhythmManager.instance.scorePerNote);
+            ScoreManager.instance.NoteHit(ScoreManager.instance.scorePerNote);
             Destroy(gameObject);
         }
         else if (noteColor == NoteColor.Blue && other.CompareTag("Blue"))
         {
-            RhythmManager.instance.NoteHit(RhythmManager.instance.scorePerNote);
+            ScoreManager.instance.NoteHit(ScoreManager.instance.scorePerNote);
             Destroy(gameObject);
         }
         else
         {
-            RhythmManager.instance.NoteMissed();
+            ScoreManager.instance.NoteMissed();
             Destroy(gameObject);
         }
     }
