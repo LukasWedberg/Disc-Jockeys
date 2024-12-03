@@ -1,0 +1,15 @@
+State Group	ID	Name			Wwise Object Path	Notes
+	763730847	TestStates			\Test\TestStates	
+
+State	ID	Name	State Group			Notes
+	748895195	None	TestStates			
+	788884573	Stop	TestStates			
+	1786192775	Go	TestStates			
+
+Audio Bus	ID	Name			Wwise Object Path	Notes
+	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
+
+Audio Devices	ID	Name	Type				Notes
+	2317455096	No_Output	No Output			
+	3859886410	System	System			
+

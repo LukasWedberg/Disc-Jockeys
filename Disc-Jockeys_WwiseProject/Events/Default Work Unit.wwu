@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{7D62EF40-EDA1-4882-A76A-4E310E58CF91}" SchemaVersion="123">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{7D62EF40-EDA1-4882-A76A-4E310E58CF91}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Enable_State_NeverGonnaGiveYouUp_audio" ID="{FF2E1A03-AD06-4767-A7FF-4CA6C1BD8657}">
+					<ChildrenList>
+						<Action Name="" ID="{E11CB7C7-7BF1-4051-AD9C-300F3A803EAF}" ShortID="791641803">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="NeverGonnaGiveYouUp_audio" ID="{E3F38154-A9E3-4AEE-B116-9782EDDFA53E}" WorkUnitID="{AAA3E42F-F3CB-47CB-9C58-8D76582E4571}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="GO_EVENT" ID="{C93FE3B9-7FEE-4AD8-8EA6-9EFF835CB480}">
+					<ChildrenList>
+						<Action Name="" ID="{08601224-84AE-4B5E-8649-522A13CDF9DA}" ShortID="953115623">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="38"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Test_Param" ID="{7E29264B-F981-444C-B78F-A1B99455F558}" WorkUnitID="{EF829FA9-A199-4F15-AB15-9B2472BF6D0E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="STOP_EVENT" ID="{62F5A403-9FC0-40AC-82E8-3DB5D8C3B660}"/>
+				<Event Name="Test_event" ID="{25B0FBFE-6FA4-420B-B0AF-DAFFB7544A35}"/>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

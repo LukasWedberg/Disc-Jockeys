@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{AAA3E42F-F3CB-47CB-9C58-8D76582E4571}" SchemaVersion="123">
+	<InteractiveMusic>
+		<WorkUnit Name="Default Work Unit" ID="{AAA3E42F-F3CB-47CB-9C58-8D76582E4571}" PersistMode="Standalone">
+			<ChildrenList>
+				<MusicSegment Name="NeverGonnaGiveYouUp_audio" ID="{E3F38154-A9E3-4AEE-B116-9782EDDFA53E}" ShortID="620380198">
+					<PropertyList>
+						<Property Name="EndPosition" Type="Real64" Value="276372.646362482"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{7F992BED-0937-4FBA-A6AB-2B5C97620F30}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{103ABB8A-4C48-40D0-8309-2C5518D4A759}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<MusicTrack Name="NeverGonnaGiveYouUp_audio" ID="{5287662F-C7DD-4332-8323-AF46D0B59097}" ShortID="728754167">
+							<ReferenceList>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{103ABB8A-4C48-40D0-8309-2C5518D4A759}"/>
+								</Reference>
+								<Reference Name="TransitionRoot">
+									<Custom>
+										<MusicTransition Name="Root" ID="{353AF46E-4262-4F9A-B53D-297B29F12FAA}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</Custom>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="NeverGonnaGiveYouUp_audio" ID="{6C82CF27-1226-46FF-86E3-F4CA6CD993D1}">
+									<Language>SFX</Language>
+									<AudioFile>NeverGonnaGiveYouUp_audio.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="934831038"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists>
+								<ObjectList Name="Sequences">
+									<Reference>
+										<Local>
+											<MusicTrackSequence Name="" ID="{9BE19469-4816-4D59-81DD-0721DA022AD9}">
+												<ObjectLists>
+													<ObjectList Name="Clips">
+														<Reference>
+															<Local>
+																<MusicClip Name="NeverGonnaGiveYouUp_audio" ID="{3D360BBA-573A-40D9-AA26-E45FE72053CF}">
+																	<PropertyList>
+																		<Property Name="EndTrimOffset" Type="Real64" Value="212044.645833333"/>
+																		<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																	</PropertyList>
+																	<AudioSourceRef Name="NeverGonnaGiveYouUp_audio" ID="{6C82CF27-1226-46FF-86E3-F4CA6CD993D1}"/>
+																	<PropertyCurveList>
+																		<PropertyCurve PropertyName="Lowpass">
+																			<Curve Name="" ID="{EAE4ACD8-73CB-466E-8795-FC89D6E77A5C}">
+																				<PropertyList>
+																					<Property Name="Flags" Type="int32" Value="1"/>
+																				</PropertyList>
+																				<PointList>
+																					<Point>
+																						<XPos>0</XPos>
+																						<YPos>0</YPos>
+																						<Flags>5</Flags>
+																					</Point>
+																					<Point>
+																						<XPos>212.044645833333</XPos>
+																						<YPos>-8.4366</YPos>
+																						<Flags>37</Flags>
+																					</Point>
+																				</PointList>
+																			</Curve>
+																		</PropertyCurve>
+																	</PropertyCurveList>
+																</MusicClip>
+															</Local>
+														</Reference>
+													</ObjectList>
+												</ObjectLists>
+											</MusicTrackSequence>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
+						</MusicTrack>
+					</ChildrenList>
+					<ObjectLists>
+						<ObjectList Name="Cues">
+							<Reference>
+								<Local>
+									<MusicCue Name="Entry Cue" ID="{147F58ED-ACDA-414E-9855-15C5B9FE700E}"/>
+								</Local>
+							</Reference>
+							<Reference>
+								<Local>
+									<MusicCue Name="Exit Cue" ID="{A4704DAD-DE1E-4D24-A7FB-28A30FEB221E}">
+										<PropertyList>
+											<Property Name="CueType" Type="int16" Value="1"/>
+											<Property Name="TimeMs" Type="Real64" Value="212044.645833333"/>
+										</PropertyList>
+									</MusicCue>
+								</Local>
+							</Reference>
+							<Reference>
+								<Local>
+									<MusicCue Name="GO" ID="{AA91C52B-80FA-4743-96CA-41044F0C1D06}">
+										<PropertyList>
+											<Property Name="CueType" Type="int16" Value="2"/>
+											<Property Name="TimeMs" Type="Real64" Value="2667.01348289874"/>
+										</PropertyList>
+									</MusicCue>
+								</Local>
+							</Reference>
+							<Reference>
+								<Local>
+									<MusicCue Name="GO!??!?!?" ID="{557966BE-4E77-44C5-95EF-49EA6EB94662}">
+										<PropertyList>
+											<Property Name="CueType" Type="int16" Value="2"/>
+											<Property Name="TimeMs" Type="Real64" Value="5109.39886873229"/>
+										</PropertyList>
+									</MusicCue>
+								</Local>
+							</Reference>
+							<Reference>
+								<Local>
+									<MusicCue Name="GOOOOOO" ID="{0006663A-C329-4447-BD62-5DC9E1625315}">
+										<PropertyList>
+											<Property Name="CueType" Type="int16" Value="2"/>
+											<Property Name="TimeMs" Type="Real64" Value="8370.056257591"/>
+										</PropertyList>
+									</MusicCue>
+								</Local>
+							</Reference>
+							<Reference>
+								<Local>
+									<MusicCue Name="1" ID="{D2F2D804-D820-4BB5-9BA9-31EC4B03016A}">
+										<PropertyList>
+											<Property Name="CueType" Type="int16" Value="2"/>
+											<Property Name="TimeMs" Type="Real64" Value="4149.81583673392"/>
+										</PropertyList>
+									</MusicCue>
+								</Local>
+							</Reference>
+							<Reference>
+								<Local>
+									<MusicCue Name="2" ID="{FF62B8BA-512F-4A24-8786-637359BE115C}">
+										<PropertyList>
+											<Property Name="CueType" Type="int16" Value="2"/>
+											<Property Name="TimeMs" Type="Real64" Value="6070.5877383079"/>
+										</PropertyList>
+									</MusicCue>
+								</Local>
+							</Reference>
+							<Reference>
+								<Local>
+									<MusicCue Name="4" ID="{EC7AA2E5-DE2F-4E3A-82FC-1792780E3774}">
+										<PropertyList>
+											<Property Name="CueType" Type="int16" Value="2"/>
+											<Property Name="TimeMs" Type="Real64" Value="1754.77926810463"/>
+										</PropertyList>
+									</MusicCue>
+								</Local>
+							</Reference>
+						</ObjectList>
+					</ObjectLists>
+				</MusicSegment>
+			</ChildrenList>
+		</WorkUnit>
+	</InteractiveMusic>
+</WwiseDocument>

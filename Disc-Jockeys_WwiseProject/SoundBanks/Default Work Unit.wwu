@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{0693E17B-644D-4BAF-B568-C833966EA3E1}" SchemaVersion="123">
+	<SoundBanks>
+		<WorkUnit Name="Default Work Unit" ID="{0693E17B-644D-4BAF-B568-C833966EA3E1}" PersistMode="Standalone">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="4"/>
+			</PropertyList>
+			<ChildrenList>
+				<SoundBank Name="Test_SoundBank" ID="{AE804E29-2A57-425D-943F-CA61E6F748ED}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Interactive Music Hierarchy" ID="{49FED366-B530-42A8-993B-924873AAB707}" WorkUnitID="{49FED366-B530-42A8-993B-924873AAB707}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Events" ID="{A69BF0FC-D84A-487C-ABDD-56F71CB2A126}" WorkUnitID="{A69BF0FC-D84A-487C-ABDD-56F71CB2A126}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>
