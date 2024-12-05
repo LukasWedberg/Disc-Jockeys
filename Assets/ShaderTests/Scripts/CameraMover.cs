@@ -217,47 +217,7 @@ public class CameraMover : MonoBehaviour
         return scaledVector;
     }
 
-
-    public void RandomState(AkEventCallbackMsg in_info)
-    {
-
-        //AkEventCallbackMsg _info
-
-        int randomIndex = (int)Mathf.Floor(Random.value * 4.9999f);
-
-        //currentState = (camState)randomIndex;
-
-        AkMusicSyncCallbackInfo mInfo = (AkMusicSyncCallbackInfo)in_info.info;
-
-        int attemptedParse;
-            
-        
-
-        if (int.TryParse(mInfo.userCueName, out attemptedParse))
-        {
-            Debug.Log(mInfo.userCueName + " is a number!");
-
-            currentState = (camState)attemptedParse;
-        }
-
-
-        //AkUnitySoundEngine.StringFromIntPtrString(AkUnitySoundEnginePINVOKE.CSharp_AkMusicSyncCallbackInfo_userCueName_get(swigCPtr));
-
-        //in_info.info.
-
-        
-       
-        
-
-        Debug.Log(mInfo.userCueName.ToString());
-
-
-        
-
-        
-
-        
-    }
+    
 
 
 
