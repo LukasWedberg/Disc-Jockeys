@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class BeatScroller : MonoBehaviour
 {
+    public static BeatScroller instance;
+    
     public float beatTempo;
     public float speed = 1f;
     public bool hasStarted;
@@ -9,6 +11,11 @@ public class BeatScroller : MonoBehaviour
     private float scrollSpeed;
     private Transform objectTransform;
     private Vector3 moveDirection;
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
