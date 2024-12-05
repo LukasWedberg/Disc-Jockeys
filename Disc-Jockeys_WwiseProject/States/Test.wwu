@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{36881214-418A-44E4-BF48-501B162C6B2B}" SchemaVersion="123">
+	<States>
+		<WorkUnit Name="Test" ID="{36881214-418A-44E4-BF48-501B162C6B2B}" PersistMode="Standalone">
+			<ChildrenList>
+				<StateGroup Name="TestStates" ID="{C76E4A31-2A16-4556-8CF4-A828C78EBAA6}">
+					<ChildrenList>
+						<State Name="None" ID="{DFC10FF7-281C-4909-BD34-7FFB51A8E63F}"/>
+						<State Name="Go" ID="{51BF9401-2175-44C4-8959-4391C68C29F5}"/>
+						<State Name="Stop" ID="{C0EE650B-76BA-4C1D-8111-26CCE7EE4803}"/>
+					</ChildrenList>
+				</StateGroup>
+			</ChildrenList>
+		</WorkUnit>
+	</States>
+</WwiseDocument>

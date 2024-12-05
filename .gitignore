@@ -10,6 +10,21 @@
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 
+# Wwise
+.backup*
+.cache*
+*.akd
+*.prof
+*.validationcache
+*.wsettings
+IncrementalSoundBankData.xml
+/[Aa]ssets/Wwise/
+
+# TMP import files
+/[Aa]ssets/TextMesh*Pro
+/[Aa]ssets/TextMesh*Pro.meta
+/[Pp]rojectSettings/SceneTemplateSettings.json
+
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
@@ -70,3 +85,18 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+Disc-Jockeys_WwiseProject/GeneratedSoundBanks/Android/Test_SoundBank.bnk
+Disc-Jockeys_WwiseProject/GeneratedSoundBanks/Android/Test_SoundBank.json
+Disc-Jockeys_WwiseProject/GeneratedSoundBanks/Android/Test_SoundBank.txt
+Disc-Jockeys_WwiseProject/GeneratedSoundBanks/iOS/Test_SoundBank.bnk
+Disc-Jockeys_WwiseProject/GeneratedSoundBanks/iOS/Test_SoundBank.json
+Disc-Jockeys_WwiseProject/GeneratedSoundBanks/iOS/Test_SoundBank.txt
+Disc-Jockeys_WwiseProject/GeneratedSoundBanks/Mac/Test_SoundBank.bnk
+Disc-Jockeys_WwiseProject/GeneratedSoundBanks/Mac/Test_SoundBank.json
+Disc-Jockeys_WwiseProject/GeneratedSoundBanks/Mac/Test_SoundBank.txt
+Disc-Jockeys_WwiseProject/GeneratedSoundBanks/Windows/Test_SoundBank.bnk
+Disc-Jockeys_WwiseProject/GeneratedSoundBanks/Windows/Test_SoundBank.json
+Disc-Jockeys_WwiseProject/GeneratedSoundBanks/Windows/Test_SoundBank.txt
+Disc-Jockeys_WwiseProject/Originals/SFX/NeverGonnaGiveYouUp_audio.wav
+WwiseUnityIntegration_Mac_Src.zip
+WwiseUnityIntegration_Windows_Src.zip
