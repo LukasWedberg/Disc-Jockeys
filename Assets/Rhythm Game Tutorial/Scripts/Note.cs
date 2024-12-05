@@ -10,7 +10,12 @@ public class Note : MonoBehaviour
         Red
     }
 
+
+    public float speed = 1f;
+
     public NoteColor noteColor; // Set the note color in the Inspector
+
+    public float timeSpawned = 0f;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -30,5 +35,13 @@ public class Note : MonoBehaviour
             RhythmManager.instance.NoteMissed();
             Destroy(gameObject);
         }
+    }
+
+    public void FixedUpdate()
+    {
+        //transform.position += Vector3.down * speed * Time.fixedDeltaTime;   
+
+
+
     }
 }

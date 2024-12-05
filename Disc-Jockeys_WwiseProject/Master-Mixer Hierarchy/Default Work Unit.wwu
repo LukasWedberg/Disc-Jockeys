@@ -9,6 +9,42 @@
 							<ObjectRef Name="System" ID="{E3343CC8-AEE8-42E5-A03F-0AFD80BEBE36}" WorkUnitID="{DC396B67-0082-4D9D-B5B7-4BACBC64707A}"/>
 						</Reference>
 					</ReferenceList>
+					<ChildrenList>
+						<Bus Name="Rick_Bus" ID="{F517B1C3-1553-4DC4-9635-B4302D65E5BE}">
+							<ObjectLists>
+								<ObjectList Name="Effects">
+									<Reference>
+										<Local>
+											<EffectSlot Name="" ID="{147ABB8F-7B9A-4DA9-B833-52286C326F2D}" ShortID="736864758">
+												<ReferenceList>
+													<Reference Name="Effect" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+														<ObjectRef Name="RickRoll_meter" ID="{80A18AA6-0080-4E77-9A16-7DB91BA3AB98}" WorkUnitID="{AD4CD247-9D12-4F81-AAAD-8F4F25BBBBD8}"/>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
+						</Bus>
+						<Bus Name="New_York_Bus" ID="{22B3C344-2FAB-4799-B61B-7A2B9BD8E6DA}">
+							<ObjectLists>
+								<ObjectList Name="Effects">
+									<Reference>
+										<Local>
+											<EffectSlot Name="" ID="{ECC71676-18A4-46BC-B586-CF6E796AE005}" ShortID="385035342">
+												<ReferenceList>
+													<Reference Name="Effect" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+														<ObjectRef Name="New_York_meter" ID="{C5478BC7-AAB0-4B54-A17A-E508896D4A54}" WorkUnitID="{AD4CD247-9D12-4F81-AAAD-8F4F25BBBBD8}"/>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
+						</Bus>
+					</ChildrenList>
 				</Bus>
 			</ChildrenList>
 		</WorkUnit>

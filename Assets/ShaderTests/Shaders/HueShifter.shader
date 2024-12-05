@@ -5,7 +5,9 @@ Shader "Unlit/HueShifter"
         _MainTex ("Texture", 2D) = "white" {}
         _ColorToShift("Hue to shift" , Color) = (1,0,1,0)
         _ColorToShiftTo("New hue" , Color) = (1,0,0,0)
-        _ColorShiftTolerance("Old Color Tolerance" , float) = .2
+        _ColorShiftContrast("Masking contrast" , float) = 2
+        _ColorShiftTolerance("Old Color Tolerance" , float) = 0.2
+        _BrightnessToShiftTo("New brightness", float) = 1
     }
     SubShader
     {
@@ -39,7 +41,9 @@ Shader "Unlit/HueShifter"
             float4 _MainTex_ST;
             float4 _ColorToShift;
             float4 _ColorToShiftTo;
+            float _ColorShiftContrast;
             float _ColorShiftTolerance;
+            float _BrightnessToShiftTo;
 
             v2f vert (appdata v)
             {
@@ -62,6 +66,40 @@ Shader "Unlit/HueShifter"
                 return HSV;
             }
 
+            float3 ConvertFromHSV(float3 hsv){
+                
+                float4 K2 = float4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+                float3 P2 = abs(frac(hsv.xxx + K2.xyz) * 6.0 - K2.www);
+                return hsv.z * lerp(K2.xxx, saturate(P2 - K2.xxx), hsv.y);
+            }
+
+            
+            float toroidalDistance( float2 pos1, float2 pos2 ){
+                
+                float dx = abs(pos2.x-pos1.x);
+                float dy = abs(pos2.y-pos1.y);
+
+                dx = step(.5,dx) * (1-abs(dx)) + step(dx,.5) *dx;
+                dy = step(.5,dy) * (1-abs(dy)) + step(dy,.5) *dy;
+
+                return sqrt(dx*dx + dy*dy);//* sign(.5*pos2.x-pos1.x);
+            
+            
+            }
+
+
+            float signedToroidalDistance( float2 pos1, float2 pos2 ){
+                
+                float dx = pos2.x-pos1.x;
+                float dy = pos2.y-pos1.y;
+
+                dx = step(.5,dx) * (1-abs(dx)) + step(dx,.5) *dx;
+                dy = step(.5,dy) * (1-abs(dy)) + step(dy,.5) *dy;
+
+                return sqrt(dx*dx + dy*dy) * sign(.5*pos2.x-pos1.x);
+            
+            
+            }
 
             //This function is courtesy of unity shader graphs. Yay!
             //I also modified it quite a bit. 
@@ -87,7 +125,7 @@ Shader "Unlit/HueShifter"
 
 
                 //We subratct the base from the target to get the offset.
-                float offset = frac(targetHSV.x - baseHSV.x);
+                float offset = signedToroidalDistance(float2( targetHSV.x ,0),float2( baseHSV.x,0) );
 
 
 
@@ -105,32 +143,63 @@ Shader "Unlit/HueShifter"
                         : (hue > 1)
                             ? hue - 1
                             : hue;
-
+                
+                
                 float4 K2 = float4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
                 float3 P2 = abs(frac(hsv.xxx + K2.xyz) * 6.0 - K2.www);
                 return hsv.z * lerp(K2.xxx, saturate(P2 - K2.xxx), hsv.y);
             }
 
 
+
             fixed4 frag (v2f i) : SV_Target
             {
                 // sample the texture
-                fixed4 col = tex2D(_MainTex, i.uv);
+                fixed4 col = 0;
+                fixed4 sample = tex2D(_MainTex, i.uv);
+                float3 sampleHSV = ConvertToHSV(sample.rgb);
+                float3 colorToShiftHSV = ConvertToHSV(_ColorToShift.rgb);
+
 
                 //We also want to mask out any colors that aren't the ones we want to shift. 
                 //We can do this by getting the distance. Haha!
 
                 //float3 targetedColorMask = 1-step( _ColorShiftTolerance ,distance(ConvertToHSV(col.rgb).x, ConvertToHSV(_ColorToShift).x) );
                 //float3 targetedColorMask = distance(ConvertToHSV(col.rgb).x, ConvertToHSV(_ColorToShift).x);
-                float3 targetedColorMask = smoothstep(0, ConvertToHSV(_ColorToShift.x), ConvertToHSV(col.rgb).x );
+                float targetedColorMask = toroidalDistance( float2( sampleHSV.x ,0 ),float2( colorToShiftHSV.x ,0 ) );
+                float steppedColorMask = step( _ColorShiftTolerance ,targetedColorMask);
+                
+                
+
+                float3 shiftedColor = Hue_Targeted_Shift(sample);
+
+                shiftedColor *= _BrightnessToShiftTo;
+
+
+                //float3 targetedColorMask = dot (   float2(   ConvertToHSV(_ColorToShift).x,0 ),   float2(     ConvertToHSV(col.rgb).x, 0 )    );
+
+
+
+                float3 maskedBase = sample.rgb *  steppedColorMask;
+
+                float3 coloredMask = (1-steppedColorMask) * shiftedColor;
+
+
+
 
                 
                 //Now we're going to be pretty clever about shifting the hue of certain parts of the texture!
                 
 
-                col.rgb = targetedColorMask;
+                //col.rgb = maskedBase + coloredMask;
 
-                //col.rgb = Hue_Targeted_Shift(col.rgb)
+                //col.rgb = targetedColorMask;
+
+                col.rgb = 1-pow( smoothstep(0, _ColorShiftTolerance, targetedColorMask), _ColorShiftContrast);
+                
+                col.rgb = lerp( sample , shiftedColor  ,col.rgb);
+
+                //col.rgb = shiftedColor
 
 
                 // apply fog

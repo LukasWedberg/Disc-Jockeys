@@ -3,7 +3,17 @@
 	<GameParameters>
 		<WorkUnit Name="Default Work Unit" ID="{EF829FA9-A199-4F15-AB15-9B2472BF6D0E}" PersistMode="Standalone">
 			<ChildrenList>
-				<GameParameter Name="Test_Param" ID="{7E29264B-F981-444C-B78F-A1B99455F558}">
+				<GameParameter Name="Test_param" ID="{D00A93D7-F61C-44E5-9A0A-E21BD61686FF}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="0"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="Rickroll_RMS" ID="{2828C7E7-B080-4DDC-88C8-96E639679463}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="0"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="NewYork_RMS" ID="{0086F952-11FE-4E3E-89EC-0DF0D7C37215}">
 					<PropertyList>
 						<Property Name="InitialValue" Type="Real64" Value="0"/>
 					</PropertyList>

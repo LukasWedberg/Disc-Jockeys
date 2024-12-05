@@ -10,11 +10,29 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{BF2B20E6-8380-41E0-6541-88897B4139E0}",
+    "Hash": "{C84028CC-53FC-F2C2-A9E8-9DF5E1866148}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
     "Plugins": {
+     "ShareSets": [
+      {
+       "Id": "1923900799",
+       "Name": "New_York_meter",
+       "ObjectPath": "\\Effects\\Default Work Unit\\New_York_meter",
+       "GUID": "{C5478BC7-AAB0-4B54-A17A-E508896D4A54}",
+       "LibName": "Wwise Meter",
+       "LibId": "8454147"
+      },
+      {
+       "Id": "3298858599",
+       "Name": "RickRoll_meter",
+       "ObjectPath": "\\Effects\\Default Work Unit\\RickRoll_meter",
+       "GUID": "{80A18AA6-0080-4E77-9A16-7DB91BA3AB98}",
+       "LibName": "Wwise Meter",
+       "LibId": "8454147"
+      }
+     ],
      "AudioDevices": [
       {
        "Id": "2317455096",
@@ -36,6 +54,32 @@
     },
     "Busses": [
      {
+      "Id": "2316230107",
+      "Name": "Rick_Bus",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\Rick_Bus",
+      "GUID": "{F517B1C3-1553-4DC4-9635-B4302D65E5BE}",
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "3298858599"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "3334026070",
+      "Name": "New_York_Bus",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\New_York_Bus",
+      "GUID": "{22B3C344-2FAB-4799-B61B-7A2B9BD8E6DA}",
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "1923900799"
+        }
+       ]
+      }
+     },
+     {
       "Id": "3803692087",
       "Name": "Master Audio Bus",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus",
@@ -44,10 +88,22 @@
     ],
     "GameParameters": [
      {
+      "Id": "1757584982",
+      "Name": "Rickroll_RMS",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Rickroll_RMS",
+      "GUID": "{2828C7E7-B080-4DDC-88C8-96E639679463}"
+     },
+     {
+      "Id": "2224406071",
+      "Name": "NewYork_RMS",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\NewYork_RMS",
+      "GUID": "{0086F952-11FE-4E3E-89EC-0DF0D7C37215}"
+     },
+     {
       "Id": "2957884783",
-      "Name": "Test_Param",
-      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Test_Param",
-      "GUID": "{7E29264B-F981-444C-B78F-A1B99455F558}"
+      "Name": "Test_param",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Test_param",
+      "GUID": "{D00A93D7-F61C-44E5-9A0A-E21BD61686FF}"
      }
     ],
     "StateGroups": [
@@ -77,9 +133,25 @@
        }
       ]
      }
+    ],
+    "SwitchGroups": [
+     {
+      "Id": "2250165792",
+      "Name": "New_Switch_Group",
+      "ObjectPath": "\\Switches\\Default Work Unit\\New_Switch_Group",
+      "GUID": "{3D584934-307A-40DB-9B3D-5EBE6A3A36B9}",
+      "Switches": [
+       {
+        "Id": "1040761112",
+        "Name": "Test_switch",
+        "ObjectPath": "\\Switches\\Default Work Unit\\New_Switch_Group\\Test_switch",
+        "GUID": "{7F758AC4-C240-47A5-A1B8-BFD2950AE4BF}"
+       }
+      ]
+     }
     ]
    }
   ],
-  "FileHash": "{E1CD285F-9EF8-9777-4942-DCEB6E6C3C94}"
+  "FileHash": "{E5458DDE-946C-5702-1E40-C13096ACD2C4}"
  }
 }

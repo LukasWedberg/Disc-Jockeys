@@ -7,7 +7,13 @@ State	ID	Name	State Group			Notes
 	1786192775	Go	TestStates			
 
 Audio Bus	ID	Name			Wwise Object Path	Notes
+	2316230107	Rick_Bus			\Default Work Unit\Master Audio Bus\Rick_Bus	
+	3334026070	New_York_Bus			\Default Work Unit\Master Audio Bus\New_York_Bus	
 	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
+
+Effect plug-ins	ID	Name	Type				Notes
+	1923900799	New_York_meter	Wwise Meter			
+	3298858599	RickRoll_meter	Wwise Meter			
 
 Audio Devices	ID	Name	Type				Notes
 	2317455096	No_Output	No Output			

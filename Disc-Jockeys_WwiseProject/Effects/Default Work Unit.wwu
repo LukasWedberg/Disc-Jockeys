@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{AD4CD247-9D12-4F81-AAAD-8F4F25BBBBD8}" SchemaVersion="123">
 	<Effects>
-		<WorkUnit Name="Default Work Unit" ID="{AD4CD247-9D12-4F81-AAAD-8F4F25BBBBD8}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{AD4CD247-9D12-4F81-AAAD-8F4F25BBBBD8}" PersistMode="Standalone">
+			<ChildrenList>
+				<Effect Name="RickRoll_meter" ID="{80A18AA6-0080-4E77-9A16-7DB91BA3AB98}" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+					<PropertyList>
+						<Property Name="MeterMode" Type="int32" Value="1"/>
+						<Property Name="ReleaseTime" Type="Real32" Value="0"/>
+					</PropertyList>
+					<PluginData>
+	<GameParameter Name="Rickroll_RMS" ID="{2828C7E7-B080-4DDC-88C8-96E639679463}"/>
+</PluginData>
+				</Effect>
+				<Effect Name="New_York_meter" ID="{C5478BC7-AAB0-4B54-A17A-E508896D4A54}" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+					<PropertyList>
+						<Property Name="MeterMode" Type="int32" Value="1"/>
+					</PropertyList>
+					<PluginData>
+	<GameParameter Name="NewYork_RMS" ID="{0086F952-11FE-4E3E-89EC-0DF0D7C37215}"/>
+</PluginData>
+				</Effect>
+			</ChildrenList>
+		</WorkUnit>
 	</Effects>
 </WwiseDocument>
