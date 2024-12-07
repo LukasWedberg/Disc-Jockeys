@@ -53,7 +53,11 @@
 				<Event Name="PLAY_INCORRECT" ID="{9E4393BF-C519-4880-B4DE-91E82277B5BA}">
 					<ChildrenList>
 						<Action Name="" ID="{54B137AC-3CC7-4438-BD43-C9A961B5EEC2}" ShortID="956553252">
-							<ReferenceList/>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="incorrect note sound" ID="{DA9BC5C2-A1E2-46D4-AFDB-761EB5FCBBAA}" WorkUnitID="{F2A2E9E7-AB23-47B6-A6F6-A451FC877759}"/>
+								</Reference>
+							</ReferenceList>
 						</Action>
 					</ChildrenList>
 				</Event>

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UIElements;
 
 public class RhythmManager : MonoBehaviour
 {
@@ -50,7 +51,7 @@ public class RhythmManager : MonoBehaviour
 
     public float notesDelay = 0;
 
-    public GameObject[] notePrefabs = new GameObject[3];
+    public GameObject[] notePrefabs = new GameObject[4];
 
     public Transform notesHolder;
 
@@ -66,6 +67,8 @@ public class RhythmManager : MonoBehaviour
 
     public string rptcID;
     public AK.Wwise.Event wwiseSongEvent;
+    public AK.Wwise.Event wwiseHitEvent;
+    public AK.Wwise.Event wwiseMissEvent;
 
 
     public float meterValue;
@@ -98,11 +101,14 @@ public class RhythmManager : MonoBehaviour
 
     public float extraTinyOffset = 0;
 
+
+    public float minDistanceFromSliderToCull = 3;
+
     
 
     void Start()
     {
-        beatScroller.speed = noteSpeed;
+        notesHolderScroller.scrollSpeed = noteSpeed;
         notesHolder.transform.position = new Vector3(0f, 0f, 0f);
 
         instance = this;
@@ -219,7 +225,7 @@ public class RhythmManager : MonoBehaviour
 
 
             float scaledVal01 = ScaleValue(meterValue, minLoudness, 0.0f, 0.0f, 1.0f);
-            Debug.Log("01 val:" + scaledVal01);
+            Debug.Log("01 val:"+ (scaledVal01 - lastLoudnessValue) );
             //Using this scaled value, we can approximate a derivative of the loudness to detect when beats happen.
 
             float dx = Mathf.Abs(scaledVal01 - lastLoudnessValue);
@@ -234,7 +240,7 @@ public class RhythmManager : MonoBehaviour
             //float leftAndRightScaledVal = (scaledVal01*2f)-1f;
 
             float leftAndRightScaledVal = ScaleValue(meterValue, minLoudness, 0.0f, leftAndRightBounds.x, leftAndRightBounds.y);
-            Debug.Log("border val:" + leftAndRightScaledVal);
+            //Debug.Log("border val:" + leftAndRightScaledVal);
 
 
             //Debug.Log(leftAndRightScaledVal);
@@ -272,7 +278,7 @@ public class RhythmManager : MonoBehaviour
             {
                 GameObject newNote = null;// = Instantiate(notePrefabs[0], notesHolder);
 
-                if ( (scaledVal01 - lastLoudnessValue)/2 > loudnessDerivativeBeatDetectionThreshold )
+                if ( (scaledVal01-lastLoudnessValue*2) > 0 )
                 {
                     newNote = Instantiate(notePrefabs[0], notesHolder);
                 }
@@ -342,12 +348,18 @@ public class RhythmManager : MonoBehaviour
         steakNumber++;
         UpdateMultiplier();
         currentScore += scoreValue * currentMultiplier;
+
+        wwiseHitEvent.Post(gameObject);
+        
     }
 
     public void NoteMissed()
     {
         steakNumber = 0;
         currentMultiplier = 1; // Reset multiplier on a miss
+
+
+        wwiseMissEvent.Post(gameObject);
     }
 
     private void UpdateMultiplier()
@@ -386,6 +398,44 @@ public class RhythmManager : MonoBehaviour
 
     }
 
+
+    public void MakeSlider(AkEventCallbackMsg in_info) {
+
+        if (makeOrPlayChart == playType.MAKECHART)
+        {
+            AkMusicSyncCallbackInfo infoWithcueName = (AkMusicSyncCallbackInfo)in_info.info;
+
+            string cueName = infoWithcueName.userCueName;
+
+            Debug.Log("Cue Name: " + cueName);
+
+            if (cueName == "LEFT")
+            {
+                Debug.Log("JUST MAKE THE DARN SLIDER!!!a");
+
+                GameObject newNote = Instantiate(notePrefabs[2], notesHolder);
+
+                
+
+                newNote.transform.position = transform.position + Vector3.up * discRadius/2f;
+            }
+
+            if (cueName == "RIGHT")
+            {
+                GameObject newNote = Instantiate(notePrefabs[3], notesHolder);
+
+                newNote.transform.position = transform.position + Vector3.up * discRadius / 2f;
+            }
+
+
+
+        }
+
+        Debug.Log("THIS IS WHERE WE MAKE A SLIDER");
+
+
+
+    }
 
 
 

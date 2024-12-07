@@ -4,13 +4,6 @@
   "BasePlatform": "Windows",
   "PluginLibs": [
    {
-    "LibName": "Wwise Flanger",
-    "LibId": "8192003",
-    "Type": "Effect",
-    "DLL": "AkFlanger",
-    "StaticLib": "AkFlangerFX"
-   },
-   {
     "LibName": "Wwise Meter",
     "LibId": "8454147",
     "Type": "Effect",
@@ -28,6 +21,6 @@
     "Type": "AudioDevice"
    }
   ],
-  "FileHash": "{53CE408D-B4EB-2F0A-7F02-2B2F8D07D5A4}"
+  "FileHash": "{A542993D-8D47-0DA7-57B1-DB2C5FCECEFA}"
  }
 }

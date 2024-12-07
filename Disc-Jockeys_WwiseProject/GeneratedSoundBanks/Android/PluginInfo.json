@@ -4,13 +4,6 @@
   "BasePlatform": "Android",
   "PluginLibs": [
    {
-    "LibName": "Wwise Flanger",
-    "LibId": "8192003",
-    "Type": "Effect",
-    "DLL": "AkFlanger",
-    "StaticLib": "AkFlangerFX"
-   },
-   {
     "LibName": "Wwise Meter",
     "LibId": "8454147",
     "Type": "Effect",
@@ -28,6 +21,6 @@
     "Type": "AudioDevice"
    }
   ],
-  "FileHash": "{04C76322-A891-D90E-9A8C-747ED069F8B0}"
+  "FileHash": "{C5F22D55-85B6-BB05-475C-C5F98A0188BF}"
  }
 }

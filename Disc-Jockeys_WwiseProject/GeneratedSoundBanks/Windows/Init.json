@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{8EEC3850-0E16-267F-745A-AD64E38BBD42}",
+    "Hash": "{AD0D9F08-A3BC-D311-251E-C45C8E735DEC}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -65,6 +65,12 @@
         }
        ]
       }
+     },
+     {
+      "Id": "2443689211",
+      "Name": "HitOrMissSounds",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\HitOrMissSounds",
+      "GUID": "{59BE786F-90D7-436E-8963-28229D71C4C7}"
      },
      {
       "Id": "3334026070",
@@ -152,6 +158,6 @@
     ]
    }
   ],
-  "FileHash": "{C7F7A87B-20D9-D508-8D1A-76D29E3688E1}"
+  "FileHash": "{E45513B3-A98C-462E-406C-97E77FD028D7}"
  }
 }

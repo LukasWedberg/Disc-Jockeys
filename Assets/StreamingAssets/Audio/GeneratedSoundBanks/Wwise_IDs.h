@@ -73,6 +73,7 @@ namespace AK
 
     namespace BUSSES
     {
+        static const AkUniqueID HITORMISSSOUNDS = 2443689211U;
         static const AkUniqueID MASTER_AUDIO_BUS = 3803692087U;
         static const AkUniqueID NEW_YORK_BUS = 3334026070U;
         static const AkUniqueID RICK_BUS = 2316230107U;

@@ -44,6 +44,7 @@
 								</ObjectList>
 							</ObjectLists>
 						</Bus>
+						<Bus Name="HitOrMissSounds" ID="{59BE786F-90D7-436E-8963-28229D71C4C7}"/>
 					</ChildrenList>
 				</Bus>
 			</ChildrenList>

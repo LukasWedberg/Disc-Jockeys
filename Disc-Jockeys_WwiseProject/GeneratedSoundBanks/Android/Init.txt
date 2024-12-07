@@ -8,6 +8,7 @@ State	ID	Name	State Group			Notes
 
 Audio Bus	ID	Name			Wwise Object Path	Notes
 	2316230107	Rick_Bus			\Default Work Unit\Master Audio Bus\Rick_Bus	
+	2443689211	HitOrMissSounds			\Default Work Unit\Master Audio Bus\HitOrMissSounds	
 	3334026070	New_York_Bus			\Default Work Unit\Master Audio Bus\New_York_Bus	
 	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
 

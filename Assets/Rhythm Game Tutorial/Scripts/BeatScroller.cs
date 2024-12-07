@@ -5,17 +5,16 @@ using UnityEngine;
 public class BeatScroller : MonoBehaviour
 {
     public float beatTempo;
-    public float speed = 1f; // Speed multiplier, set in Inspector
-
+    
     public bool hasStarted;
 
-    private float scrollSpeed;
+    public float scrollSpeed;
 
     // Start is called before the first frame update
     void Start()
     {
         //scrollSpeed = beatTempo / 60f * speed;
-        scrollSpeed = speed;
+        scrollSpeed = scrollSpeed;
         //transform.position = new Vector3(0f, transform.position.y * speed, 0f);
         
 

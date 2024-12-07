@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Rhythm Game Tutorial/Scenes/StartPage.unity
+    guid: 274bcb5bc7feef043a1156187c2110d1
+  - enabled: 1
+    path: Assets/Rhythm Game Tutorial/Scenes/Customization.unity
+    guid: 0e53dd18a606a8148bd35383ee57927b
+  - enabled: 1
+    path: Assets/Rhythm Game Tutorial/Scenes/LevelSelect.unity
+    guid: 9670f25118315c84b9cf24d032fcfb01
+  - enabled: 1
+    path: Assets/Rhythm Game Tutorial/Scenes/Rhythm.unity
+    guid: ab66c11d286a1a44d978a6cd9f2be42e
   m_configObjects: {}
