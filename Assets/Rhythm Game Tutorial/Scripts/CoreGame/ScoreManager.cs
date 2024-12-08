@@ -55,6 +55,8 @@ public class ScoreManager : MonoBehaviour
         streakNumber = 0;
         currentMultiplier = 1;
 
+       // Debug.Log("NOTE MISSED!");
+
         wwiseMissEvent.Post(gameObject);
     }
 

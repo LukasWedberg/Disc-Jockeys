@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UIElements;
+using System.Xml;
 
 public class RhythmManager : MonoBehaviour
 {
@@ -104,6 +105,9 @@ public class RhythmManager : MonoBehaviour
 
     public float minDistanceFromSliderToCull = 3;
 
+    private bool currentlyBlue = true;
+
+    private bool beganSong = false;
     
 
     void Start()
@@ -145,9 +149,10 @@ public class RhythmManager : MonoBehaviour
     void setupChart( ) {
         if (makeOrPlayChart == playType.PLAYCHART)
         {
-            notesHolder.transform.position -= Vector3.up * amountToWaitForSync - Vector3.up * extraTinyOffset;
+            notesHolder.transform.position -= Vector3.up * amountToWaitForSync - Vector3.up * extraTinyOffset;// - Vector3.up * delayBeforeSongPlays;
 
-            
+            //notesHolderScroller.hasStarted = true;
+
         }
         else if (makeOrPlayChart == playType.MAKECHART)
         {
@@ -161,8 +166,11 @@ public class RhythmManager : MonoBehaviour
                
 
             }
+
+            
             notesHolderScroller.hasStarted = true;
 
+            //wwiseSongEvent.Post(gameObject);
         }    
     
     
@@ -203,7 +211,9 @@ public class RhythmManager : MonoBehaviour
 
                 Debug.Log("DING DONG, DING DONG, THIS IS THE WAITING SONG, THIS IS THE WAITING SONG");
             }
-            else if(notesHolderScroller.hasStarted == false) {
+            else if(beganSong == false) {
+                beganSong = true;
+
                 //Time to play the song!
 
                 //PostEvent(eventID, gameObject);
@@ -225,7 +235,7 @@ public class RhythmManager : MonoBehaviour
 
 
             float scaledVal01 = ScaleValue(meterValue, minLoudness, 0.0f, 0.0f, 1.0f);
-            Debug.Log("01 val:"+ (scaledVal01 - lastLoudnessValue) );
+            //Debug.Log("01 val:"+ (scaledVal01 - lastLoudnessValue) );
             //Using this scaled value, we can approximate a derivative of the loudness to detect when beats happen.
 
             float dx = Mathf.Abs(scaledVal01 - lastLoudnessValue);
@@ -239,7 +249,7 @@ public class RhythmManager : MonoBehaviour
 
             //float leftAndRightScaledVal = (scaledVal01*2f)-1f;
 
-            float leftAndRightScaledVal = ScaleValue(meterValue, minLoudness, 0.0f, leftAndRightBounds.x, leftAndRightBounds.y);
+            float leftAndRightScaledVal = ScaleValue(meterValue, minLoudness, 0.0f, leftAndRightBounds.y, leftAndRightBounds.x);
             //Debug.Log("border val:" + leftAndRightScaledVal);
 
 
@@ -272,13 +282,19 @@ public class RhythmManager : MonoBehaviour
             //spawnPos = new Vector3( transform.position.x, transform.position.y + spawnPosHeightOffset, transform.position.z );
 
 
+
             
+
 
             if (dx > loudnessDerivativeBeatDetectionThreshold && makeOrPlayChart == playType.MAKECHART && beatsPerSecondLimiterTimer > beatsPerSecondLimiter)
             {
+
+
+
+
                 GameObject newNote = null;// = Instantiate(notePrefabs[0], notesHolder);
 
-                if ( (scaledVal01-lastLoudnessValue*2) > 0 )
+                if ( currentlyBlue ) //(scaledVal01-lastLoudnessValue*2) > 0 )
                 {
                     newNote = Instantiate(notePrefabs[0], notesHolder);
                 }
@@ -310,9 +326,12 @@ public class RhythmManager : MonoBehaviour
             }
 
 
+
+            lastLoudnessDerivative = scaledVal01 - lastLoudnessValue;
+
             lastLoudnessValue = scaledVal01;
 
-            lastLoudnessDerivative = dx;
+            
 
 
         }
@@ -321,6 +340,13 @@ public class RhythmManager : MonoBehaviour
 
     }
 
+
+    public void SwitchColor() {
+        currentlyBlue = !currentlyBlue;
+
+        //Debug.Log("Color swap!");
+    
+    }
 
 
 
@@ -399,7 +425,7 @@ public class RhythmManager : MonoBehaviour
     }
 
 
-    public void MakeSlider(AkEventCallbackMsg in_info) {
+    public void ReadCue(AkEventCallbackMsg in_info) {
 
         if (makeOrPlayChart == playType.MAKECHART)
         {
@@ -426,6 +452,16 @@ public class RhythmManager : MonoBehaviour
 
                 newNote.transform.position = transform.position + Vector3.up * discRadius / 2f;
             }
+
+            float attemptedNumberParse;
+
+            if (float.TryParse( cueName , out attemptedNumberParse ))
+            {
+                loudnessDerivativeBeatDetectionThreshold = attemptedNumberParse;
+
+
+            }
+
 
 
 

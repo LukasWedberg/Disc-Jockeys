@@ -18,15 +18,23 @@ public class Spin : MonoBehaviour
 
             if (discController != null)
             {
+                Debug.Log("Has a controller!");
+
+
                 // Check if disc's spinning direction matches SpinDirection
                 if ((spinDirection == SpinDirection.Left && discController.isSpinningLeft) ||
                     (spinDirection == SpinDirection.Right && discController.isSpinningRight))
                 {
+                    Debug.Log("Is spinning!");
+
+
                     ScoreManager.instance.NoteHit(ScoreManager.instance.scorePerSpin);
                     Destroy(gameObject); 
                 }
                 else
                 {
+                    Debug.Log("Isn't spinning?");
+
                     ScoreManager.instance.NoteMissed();
                     Destroy(gameObject); 
                 }

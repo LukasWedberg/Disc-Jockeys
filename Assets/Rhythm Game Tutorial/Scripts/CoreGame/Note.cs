@@ -19,22 +19,37 @@ public class Note : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Check collision with tags
-        if (noteColor == NoteColor.Red && other.CompareTag("Red"))
+
+        DiscController controller = GameObject.Find("Disc").GetComponent<DiscController>();
+
+        if (controller != null )
         {
-            ScoreManager.instance.NoteHit(ScoreManager.instance.scorePerNote);
-            Destroy(gameObject);
+            // Check collision with tags
+            if (noteColor == NoteColor.Red && other.CompareTag("Red"))
+            {
+                ScoreManager.instance.NoteHit(ScoreManager.instance.scorePerNote);
+                Destroy(gameObject);
+            }
+            else if (noteColor == NoteColor.Blue && other.CompareTag("Blue"))
+            {
+                ScoreManager.instance.NoteHit(ScoreManager.instance.scorePerNote);
+                Destroy(gameObject);
+            } else if (controller.isSpinning) {
+
+                ScoreManager.instance.NoteHit(ScoreManager.instance.scorePerNote);
+                Destroy(gameObject);
+            }
+            else
+            {
+                ScoreManager.instance.NoteMissed();
+                Destroy(gameObject);
+            }
+
+
+
         }
-        else if (noteColor == NoteColor.Blue && other.CompareTag("Blue"))
-        {
-            ScoreManager.instance.NoteHit(ScoreManager.instance.scorePerNote);
-            Destroy(gameObject);
-        }
-        else
-        {
-            ScoreManager.instance.NoteMissed();
-            Destroy(gameObject);
-        }
+
+        
     }
 
     public void FixedUpdate()
