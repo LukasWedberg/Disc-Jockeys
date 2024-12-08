@@ -12,25 +12,24 @@ public class CircleSlider : MonoBehaviour
 
     [SerializeField] Transform Knob;
     [SerializeField] TMPro.TextMeshProUGUI ValueText;
+    [SerializeField] Transform CircleCenter; // Reference to the center of the circle
     Vector3 mousePos;
+
     public void onHandleDrag()
     {
-        //get mouse position and calculate angle
+        //get mouse position and calculate angle relative to circle center
         mousePos = Input.mousePosition;
-        Vector2 dir = mousePos - Knob.position;
+        Vector2 centerScreenPos = RectTransformUtility.WorldToScreenPoint(Camera.main, CircleCenter.position);
+        Vector2 dir = mousePos - (Vector3)centerScreenPos;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         angle = (angle <= 0) ? (360 + angle) : angle;
 
-        //rotate knob to angle
-        Quaternion r = Quaternion.AngleAxis(angle + 135f, Vector3.forward);
-        Knob.rotation = r;
-
-        //set value text to display angle
-       // ValueText.text = angle.ToString("0");
+        //rotate knob around the circle center
+        Knob.position = CircleCenter.position + (Quaternion.Euler(0, 0, angle) * Vector3.right * (Knob.position - CircleCenter.position).magnitude);
+        Knob.rotation = Quaternion.Euler(0, 0, angle + 135f);
 
         //set color of head to change with angle
         newColor = Color.HSVToRGB(angle / 360, 1, 1);
-
         HeadMaterial.SetColor(nh, newColor);
 
         //saving new color to playerprefs
