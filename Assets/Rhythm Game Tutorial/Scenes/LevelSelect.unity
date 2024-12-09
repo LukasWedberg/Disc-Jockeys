@@ -532,6 +532,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 556219996}
   m_CullTransparentMesh: 1
+--- !u!1 &587472602
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 587472604}
+  - component: {fileID: 587472603}
+  m_Layer: 0
+  m_Name: WwiseGlobal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &587472603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587472602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 065f9d7dc9561ba4aac0da9d43ef5068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitializationSettings: {fileID: 11400000, guid: dbc0dc59b7623d745809c9365ed782a7, type: 2}
+  basePath: 
+  language: 
+  defaultPoolSize: 0
+  lowerPoolSize: 0
+  streamingPoolSize: 0
+  memoryCutoffThreshold: 0
+  monitorPoolSize: 0
+  monitorQueuePoolSize: 0
+  callbackManagerBufferSize: 0
+  spatialAudioPoolSize: 0
+  maxSoundPropagationDepth: 0
+  engineLogging: 0
+--- !u!4 &587472604
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587472602}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &724489789
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,6 +603,8 @@ GameObject:
   - component: {fileID: 724489793}
   - component: {fileID: 724489796}
   - component: {fileID: 724489795}
+  - component: {fileID: 724489798}
+  - component: {fileID: 724489797}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -631,8 +690,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78671b3026244b84eb0386be9e8fc7a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDefaultListener: 1
-  listenerId: 0
 --- !u!114 &724489794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -645,17 +702,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9a4c0ae0f1618c4582ab857dbee064a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_listeners:
-    initialListenerList: []
-    useDefaultListeners: 1
-  isEnvironmentAware: 0
-  isStaticObject: 0
-  usePositionOffsetData: 0
-  m_positionOffsetData:
-    KeepMe: 0
-    positionOffset: {x: 0, y: 0, z: 0}
-  m_posOffsetData: {fileID: 0}
-  listenerMask: 1
 --- !u!114 &724489795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -668,8 +714,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2f272793514df141bc6c136e585694e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDefaultListener: 1
-  listenerId: 0
 --- !u!114 &724489796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,6 +724,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27358681063d961409d66a8aa97e6f76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &724489797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724489789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c86778701fbb65a4da2c8e6ccd0c9fe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDefaultListener: 1
+  listenerId: 0
+--- !u!114 &724489798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724489789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a4a4ab7ef85f724b8d4efc220d04ef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_listeners:
@@ -950,19 +1020,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c97beec1f626ed34b83162cb21571102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitializationSettings: {fileID: 11400000, guid: 7622181b3f51c024aa4c3b128d3761fd, type: 2}
-  basePath: 
-  language: 
-  defaultPoolSize: 0
-  lowerPoolSize: 0
-  streamingPoolSize: 0
-  memoryCutoffThreshold: 0
-  monitorPoolSize: 0
-  monitorQueuePoolSize: 0
-  callbackManagerBufferSize: 0
-  spatialAudioPoolSize: 0
-  maxSoundPropagationDepth: 0
-  engineLogging: 0
 --- !u!4 &909081060
 Transform:
   m_ObjectHideFlags: 0
@@ -1779,3 +1836,4 @@ SceneRoots:
   - {fileID: 1116821008}
   - {fileID: 156466353}
   - {fileID: 909081060}
+  - {fileID: 587472604}
