@@ -187,7 +187,7 @@ public class CameraMover : MonoBehaviour
 
             case camState.DADES_ORIGINAL_POV:
 
-                transform.position = orbitDJPoint.position + new Vector3(0,3, 8);
+                transform.position = orbitDJPoint.position + (orbitDJPoint.forward * 8 + Vector3.up * 3).normalized * orbitDJDist;
 
                 transform.LookAt(orbitDJPoint.position);
 
