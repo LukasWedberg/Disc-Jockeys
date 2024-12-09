@@ -34,5 +34,5 @@ Material:
     - _ColorShiftTolerance: 0.2
     m_Colors:
     - _ColorToShift: {r: 1, g: 0.8039216, b: 0, a: 0}
-    - _ColorToShiftTo: {r: 1, g: 0.980955, b: 0, a: 1}
+    - _ColorToShiftTo: {r: 0.70111275, g: 0, b: 1, a: 1}
   m_BuildTextureStacks: []

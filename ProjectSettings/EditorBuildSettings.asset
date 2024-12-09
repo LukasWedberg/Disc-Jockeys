@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Rhythm Game Tutorial/Scenes/Rhythm.unity
     guid: ab66c11d286a1a44d978a6cd9f2be42e
+  - enabled: 1
+    path: Assets/Rhythm Game Tutorial/Scenes/EndPage.unity
+    guid: 7c0d3b775c95cc34a8c4a8ae2fd0aad8
   m_configObjects: {}

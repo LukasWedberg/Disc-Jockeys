@@ -275,7 +275,7 @@ public class RhythmManager : MonoBehaviour
 
             leftAndRightScaledVal = Mathf.Clamp(leftAndRightScaledVal, leftAndRightBounds.x, leftAndRightBounds.y);
 
-            float spawnPosHeightOffset = Mathf.Sqrt((discRadius * discRadius) - (leftAndRightScaledVal * leftAndRightScaledVal));
+            float spawnPosHeightOffset = Mathf.Sqrt( Mathf.Max( (discRadius * discRadius) - (leftAndRightScaledVal * leftAndRightScaledVal),0 ));
 
 
             spawnPos = new Vector3(leftAndRightScaledVal, transform.position.y + spawnPosHeightOffset, transform.position.z);

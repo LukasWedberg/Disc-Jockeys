@@ -5,6 +5,9 @@ Shader "Unlit/MotionBlur"
         _MainTex ("Texture", 2D) = "white" {}
         _BlurLength ("Blur Length", int) = 8
         _BlurStep("Blur Step", float) = 1
+
+        _PretendVelocity( "Pretend Velocity", Vector) = ( 0,-1,0 ,0)
+
     }
 
 
@@ -27,6 +30,9 @@ Shader "Unlit/MotionBlur"
             int _BlurLength;
             float _BlurStep;
 
+            float4 _PretendVelocity;
+
+            
 
             struct MeshData
             {
@@ -108,6 +114,8 @@ Shader "Unlit/MotionBlur"
 
                 fixed4 blurDirection = tex2D(_CameraMotionVectorsTexture, uv);
 
+                //blurDirection = normalize blurDirection + normalize(_PretendVelocity) );
+
                 //col.rgb = col.rgb *.5 + .5;
 
 
@@ -123,6 +131,7 @@ Shader "Unlit/MotionBlur"
                 blurredColor /= (_BlurLength+1);
 
 
+                
                 return float4(blurredColor, 1.0);
             }
             ENDCG
